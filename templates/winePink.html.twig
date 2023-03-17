@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vin blanc{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/winePage.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-2">
+        <h1 class="h1 mb-3 font-weight-normal">Catalogue de vin rosé et autre</h1>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <img src="{{ asset('img/vin/La-cabane.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">LA CABANE</h5>
+                        <ul class="card-text">
+                            <li>Milèsime : 2019</li>
+                            <li>Village de production : Chasselay</li>
+                            <li>Cépage : 100% Gamay</li>
+                            <li>Sol : terroir granitique</li>
+                            <li>Elevage : cuve pendant 6 mois sur lie</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Charcuteries, barbecue, poissons</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">LA SAROMAGNOTE - ROSE</h5>
+                        <ul class="card-text">
+                            <li>Milèsime : 2019</li>
+                            <li>Village de production : Marcilly d’Azergues</li>
+                            <li>Cépage : 100%Gamay</li>
+                            <li>Sol : terroir de gravières</li>
+                            <li>Elevage : fût de chêne pendant 10 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Charcuteries, fromages frais</li>
+                        </ul>
+                    </div>
+                    <img src="{{ asset('img/vin/saromagnote_rose.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <img src="{{ asset('img/vin/La-bulle-Lyonnaise.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">BULLE LYONNAISE</h5>
+                        <ul class="card-text">
+                            <li>Milèsime : 2019</li>
+                            <li>Village de production : Lissieu</li>
+                            <li>Cépage : 100%Gamay (+ de 1000 sortes de gamay)</li>
+                            <li>Sol : Terroir argile et pierres dorées</li>
+                            <li>Elevage : cuve pendant 10 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Terrines, viandes grillées, volailles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">BLANC DE BLANC</h5>
+                        <ul class="card-text">
+                            <li>Milèsime : 2019</li>
+                            <li>Village de production : Saint-Didier au Mont d’Or</li>
+                            <li>Cépage : 100%Gamay</li>
+                            <li>Sol : argilo-calcaire</li>
+                            <li>Elevage : fût de chêne pendant 12 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Viandes rouges, boeuf ficelle</li>
+                        </ul>
+                    </div>
+                    <img src="{{ asset('img/vin/Blanc-de-blanc.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <img src="{{ asset('img/vin/quetzal.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">QUETZAL</h5>
+                        <ul class="card-text">
+                            <li>Milèsime : 2018</li>
+                            <li>Village de production : Chasselay</li>
+                            <li>Cépage : 100 % Chardonnay en vendanges tardives</li>
+                            <li>Sol : terroir argilo limoneux</li>
+                            <li>Elevage : fût de chêne pendant plus de 12 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Apéritifs ou desserts (tartes aux fruits, poire Belle-Hélène)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">LEON</h5>
+                        <ul class="card-text">
+                            <li>Milèsime : 2014</li>
+                            <li>Village de production : Chasselay</li>
+                            <li>Cépage : 100 % Chardonnay</li>
+                            <li>Sol : terroir argilo limoneux</li>
+                            <li>Elevage : vin passerillé pendant 4 mois puis en fût durant 30 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Desserts, tartes aux mirabelles, ou en digestif</li>
+                        </ul>
+                    </div>
+                    <img src="{{ asset('img/vin/Leon.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar bg-dark sticky-bottom">
+        <form class="container-fluid">
+            <a class="btn btn-light" href="{{ url('app_wineRed') }}">
+                <img src="{{ asset('img/icone/rouge.png') }}" alt="vin rouge icone" class="fe-icone-nav">
+            </a>
+            <a class="btn btn-light" href="{{ url('app_wineWhite') }}">
+                <img src="{{ asset('img/icone/blanc.png') }}" alt="vin blanc icone" class="fe-icone-nav">
+            </a>
+            <a class="btn btn-light" href="{{ url('app_winePink') }}">
+                <img src="{{ asset('img/icone/rose.png') }}" alt="vin rosé icone" class="fe-icone-nav">
+            </a>
+            <a class="btn btn-light" href="{{ url('app_wineOrder') }}">
+                <img src="{{ asset('img/icone/achat.png') }}" alt="achat icone" class="fe-icone-nav">
+            </a>
+        </form>
+    </nav>
+{% endblock %}

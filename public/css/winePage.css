@@ -1,0 +1,19 @@
+.fe-card {
+    display: flex;
+    border: 1px solid #979797;
+    border-radius: 5px;
+    padding: 0 10px;
+    height: 100%;
+}
+
+.fe-card-img {
+    height: 220px;
+    width: 115px;
+    margin: auto;
+    object-fit: cover;
+    padding: 5px 0;
+}
+
+.fe-icone-nav {
+    width: 40px;
+}

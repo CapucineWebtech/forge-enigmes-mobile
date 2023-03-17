@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WineGame{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/winePage.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="container" style="min-height: 100vh">
+        <h1 class="h1 mt-2 mb-3 font-weight-normal text-center">Commandes</h1>
+        <h2>Vos précédentes commandes :</h2>
+        <img src="{{ asset('img/tableau.webp') }}" class="w-100" alt="tableau commandes">
+        <div class="mt-2 mb-3">{{ wineGame.hint|raw }}</div>
+    </div>
+    <nav class="navbar bg-dark sticky-bottom">
+        <form class="container-fluid">
+            <a class="btn btn-light" href="{{ url('app_wineRed') }}">
+                <img src="{{ asset('img/icone/rouge.png') }}" alt="vin rouge icone" class="fe-icone-nav">
+            </a>
+            <a class="btn btn-light" href="{{ url('app_wineWhite') }}">
+                <img src="{{ asset('img/icone/blanc.png') }}" alt="vin blanc icone" class="fe-icone-nav">
+            </a>
+            <a class="btn btn-light" href="{{ url('app_winePink') }}">
+                <img src="{{ asset('img/icone/rose.png') }}" alt="vin rosé icone" class="fe-icone-nav">
+            </a>
+            <a class="btn btn-light" href="{{ url('app_wineOrder') }}">
+                <img src="{{ asset('img/icone/achat.png') }}" alt="achat icone" class="fe-icone-nav">
+            </a>
+        </form>
+    </nav>
+{% endblock %}

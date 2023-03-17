@@ -120,7 +120,7 @@ class HomeController extends AbstractController
 
             // check user code
             if ($data['enter'] === $winegame->getUserCode()) {
-                return $this->redirectToRoute('app_index');
+                return $this->redirectToRoute('app_setUserCookie');
             }
             // check admin code
             if ($data['enter'] === $winegame->getAdminCode()) {
@@ -140,6 +140,16 @@ class HomeController extends AbstractController
         $response = $this->redirectToRoute('app_admin');
         $response->headers->setCookie(
             new Cookie('wineGameAdminCookie', "admin",0,'/',null,false,false)
+        );
+        return $response;
+    }
+
+    #[Route('/setUserCookie', name: 'app_setUserCookie')]
+    public function setUserCookie(): Response
+    {
+        $response = $this->redirectToRoute('app_wineRed');
+        $response->headers->setCookie(
+            new Cookie('wineGameUserCookie', "user",0,'/',null,false,false)
         );
         return $response;
     }
@@ -213,5 +223,61 @@ class HomeController extends AbstractController
         $this->em->persist($wineGame);
         $this->em->flush();
         return $this->redirectToRoute('app_admin');
+    }
+
+    #[Route('/wineOrder', name: 'app_wineOrder')]
+    public function wineOrder(Request $request): Response
+    {
+        $winegame = $this->checkWineGameCookie($request);
+        if (!$winegame) {
+            return $this->redirectToRoute('app_choseWineGame');
+        }
+
+        if (!$request->cookies->has('wineGameUserCookie')) {
+            return $this->redirectToRoute('app_index');
+        }
+
+        return $this->render('wineOrder.html.twig', [
+            'wineGame' => $winegame
+        ]);
+    }
+
+    #[Route('/wineWhite', name: 'app_wineWhite')]
+    public function wineWhite(Request $request): Response
+    {
+        $winegame = $this->checkWineGameCookie($request);
+        if (!$winegame) {
+            return $this->redirectToRoute('app_choseWineGame');
+        }
+        if (!$request->cookies->has('wineGameUserCookie')) {
+            return $this->redirectToRoute('app_index');
+        }
+        return $this->render('wineWhite.html.twig');
+    }
+
+    #[Route('/winePink', name: 'app_winePink')]
+    public function winePink(Request $request): Response
+    {
+        $winegame = $this->checkWineGameCookie($request);
+        if (!$winegame) {
+            return $this->redirectToRoute('app_choseWineGame');
+        }
+        if (!$request->cookies->has('wineGameUserCookie')) {
+            return $this->redirectToRoute('app_index');
+        }
+        return $this->render('winePink.html.twig');
+    }
+
+    #[Route('/wineRed', name: 'app_wineRed')]
+    public function wineRed(Request $request): Response
+    {
+        $winegame = $this->checkWineGameCookie($request);
+        if (!$winegame) {
+            return $this->redirectToRoute('app_choseWineGame');
+        }
+        if (!$request->cookies->has('wineGameUserCookie')) {
+            return $this->redirectToRoute('app_index');
+        }
+        return $this->render('wineRed.html.twig');
     }
 }

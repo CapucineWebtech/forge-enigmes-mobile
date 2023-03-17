@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vin blanc{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/winePage.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-2">
+        <h1 class="h1 mb-3 font-weight-normal">Catalogue de vin blanc</h1>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <img src="{{ asset('img/vin/Champ-de-lorge.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">CHAMP DE LORGE</h5>
+                        <ul class="card-text">
+                            <li>Village de production : Chasselay</li>
+                            <li>Cépage : 100% Chardonnay</li>
+                            <li>Sol : terroir argilo limoneux</li>
+                            <li>Elevage : Cuve pendant 6 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Apéritif, salades estivales (avocat-crevette)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">PROBUS MONT DOUR</h5>
+                        <ul class="card-text">
+                            <li>Village de production : Chasselay</li>
+                            <li>Cépage : 100% Chardonnay</li>
+                            <li>Sol : terroir argilo limoneux</li>
+                            <li>Elevage : Fût de chêne pendant 12 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Poissons, crustacés, gambas à la plancha</li>
+                        </ul>
+                    </div>
+                    <img src="{{ asset('img/vin/Probus-mont-dour.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <img src="{{ asset('img/vin/saromagnote_blanc.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">LA SAROMAGNOTE</h5>
+                        <ul class="card-text">
+                            <li>Village de production : Saint-Romain au Mont d’Or</li>
+                            <li>Cépage : 50 % Chardonnay – 50% Viognier</li>
+                            <li>Sol : calcaires bajociens</li>
+                            <li>Elevage : fût de chêne pendant 12 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Poissons en sauce, gratin de fruits de mer, volailles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">L'ORCHIDEE</h5>
+                        <ul class="card-text">
+                            <li>Village de production : Chasselay</li>
+                            <li>Cépage : 100 % Viognier</li>
+                            <li>Sol : terroir granitique</li>
+                            <li>Elevage : fût de chêne pendant 10 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Apéritif, poissons grillés, salades estivales, crevettes</li>
+                        </ul>
+                    </div>
+                    <img src="{{ asset('img/vin/Orchidee.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <img src="{{ asset('img/vin/varax-blanc.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">VARAX VIOGNIER</h5>
+                        <ul class="card-text">
+                            <li>Village de production : Marcilly d’Azergues</li>
+                            <li>Cépage : 100 % Viognier</li>
+                            <li>Sol : gravières et silex</li>
+                            <li>Elevage : fût de chêne pendant 12 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Apéritif, Foie gras</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar bg-dark sticky-bottom">
+        <form class="container-fluid">
+            <a class="btn btn-light" href="{{ url('app_wineRed') }}">
+                <img src="{{ asset('img/icone/rouge.png') }}" alt="vin rouge icone" class="fe-icone-nav">
+            </a>
+            <a class="btn btn-light" href="{{ url('app_wineWhite') }}">
+                <img src="{{ asset('img/icone/blanc.png') }}" alt="vin blanc icone" class="fe-icone-nav">
+            </a>
+            <a class="btn btn-light" href="{{ url('app_winePink') }}">
+                <img src="{{ asset('img/icone/rose.png') }}" alt="vin rosé icone" class="fe-icone-nav">
+            </a>
+            <a class="btn btn-light" href="{{ url('app_wineOrder') }}">
+                <img src="{{ asset('img/icone/achat.png') }}" alt="achat icone" class="fe-icone-nav">
+            </a>
+        </form>
+    </nav>
+{% endblock %}

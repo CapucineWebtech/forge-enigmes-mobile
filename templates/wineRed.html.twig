@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vin blanc{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/winePage.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-2">
+        <h1 class="h1 mb-3 font-weight-normal">Catalogue de vin rouge</h1>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <img src="{{ asset('img/vin/chateauvieux.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">CHATEAUVIEUX</h5>
+                        <ul class="card-text">
+                            <li>Village de production : Chasselay</li>
+                            <li>Cépage : 100%Gamay</li>
+                            <li>Sol : terroir granitique</li>
+                            <li>Elevage : cuve pendant 10 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Charcuterie, fromage frais</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">PROBUS MONT DOUR</h5>
+                        <ul class="card-text">
+                            <li>Village de production : Marcilly d’Azergues</li>
+                            <li>Cépage : 100%Gamay</li>
+                            <li>Sol : terroir de gravières</li>
+                            <li>Elevage : fût de chêne pendant 10 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Charcuteries, fromages frais</li>
+                        </ul>
+                    </div>
+                    <img src="{{ asset('img/vin/Probus-mont-dour_rouge.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <img src="{{ asset('img/vin/clos-de-la-roue.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">CLOS DE LA ROUE</h5>
+                        <ul class="card-text">
+                            <li>Village de production : Lissieu</li>
+                            <li>Cépage : 100%Gamay (+ de 1000 sortes de gamay)</li>
+                            <li>Sol : Terroir argile et pierres dorées</li>
+                            <li>Elevage : cuve pendant 10 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Terrines, viandes grillées, volailles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">SAINT-DIDIER</h5>
+                        <ul class="card-text">
+                            <li>Village de production : Saint-Didier au Mont d’Or</li>
+                            <li>Cépage : 100%Gamay</li>
+                            <li>Sol : argilo-calcaire</li>
+                            <li>Elevage : fût de chêne pendant 12 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Viandes rouges, boeuf ficelle</li>
+                        </ul>
+                    </div>
+                    <img src="{{ asset('img/vin/Saint-didier.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <img src="{{ asset('img/vin/la-saromagnote.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">LA SAROMAGNOTE</h5>
+                        <ul class="card-text">
+                            <li>Village de production : Saint-Romain au Mont d’Or</li>
+                            <li>Cépage : 65% Pinot Noir 35% Syrah</li>
+                            <li>Sol : calcaires bajociens</li>
+                            <li>Elevage : fût de chêne pendant 8 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Saucisses grillées, côtelettes d’agneau</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">LE BOIS DE LISSIEU</h5>
+                        <ul class="card-text">
+                            <li>Village de production : Lissieu</li>
+                            <li>Cépage : 100 % Pinot Noir</li>
+                            <li>Sol : terroir d’argile et pierres dorées</li>
+                            <li>Elevage : fût de chêne pendant 10 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Viandes grillées, agneau, fromages</li>
+                        </ul>
+                    </div>
+                    <img src="{{ asset('img/vin/le-bois-de-lissieu.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <div class="fe-card">
+                    <img src="{{ asset('img/vin/Varax-rouge.webp') }}" class="card-img-top bloc3-img fe-card-img" alt="vin">
+                    <div class="card-body d-grid mt-2 mb-2">
+                        <h5 class="card-title">VARAX SYRAH</h5>
+                        <ul class="card-text">
+                            <li>Village de production : Marcilly d’Azergues</li>
+                            <li>Cépage : 100 % Syrah</li>
+                            <li>Sol : gravières et silex</li>
+                            <li>Elevage : fût de chêne pendant 8 mois</li>
+                        </ul>
+                        <h6 class="card-title">ASSOCIATION CULINAIRE</h6>
+                        <ul>
+                            <li>Cuisine asiatique, plats épicés, tajines, fromages</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar bg-dark sticky-bottom">
+        <form class="container-fluid">
+            <a class="btn btn-light" href="{{ url('app_wineRed') }}">
+                <img src="{{ asset('img/icone/rouge.png') }}" alt="vin rouge icone" class="fe-icone-nav">
+            </a>
+            <a class="btn btn-light" href="{{ url('app_wineWhite') }}">
+                <img src="{{ asset('img/icone/blanc.png') }}" alt="vin blanc icone" class="fe-icone-nav">
+            </a>
+            <a class="btn btn-light" href="{{ url('app_winePink') }}">
+                <img src="{{ asset('img/icone/rose.png') }}" alt="vin rosé icone" class="fe-icone-nav">
+            </a>
+            <a class="btn btn-light" href="{{ url('app_wineOrder') }}">
+                <img src="{{ asset('img/icone/achat.png') }}" alt="achat icone" class="fe-icone-nav">
+            </a>
+        </form>
+    </nav>
+{% endblock %}
