@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
+{% block title %}Choix machine{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/connexion.css') }}">
 {% endblock %}
 
 {% block javascripts %}
@@ -11,5 +12,20 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Connectez-vous</h1>
+    <div class="fe-form-container-container">
+        <div class="fe-form-container">
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger mt-2">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {{ form_start(form) }}
+                <h1 class="h3 mb-3 font-weight-normal text-center">Bienvenu !</h1>
+                {{ form_label(form.enter) }}
+                {{ form_widget(form.enter, {'attr': {'class': 'form-control mb-5 mt-3'}}) }}
+                {{ form_errors(form.enter) }}
+                <button class="btn btn-lg btn-info d-block m-auto" type="submit">Valider</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

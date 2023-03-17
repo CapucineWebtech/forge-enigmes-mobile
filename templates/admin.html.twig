@@ -8,17 +8,18 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script>
+        function deleteCookie(){
+            document.cookie = "wineGameCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            window.location.replace("{{ url('app_choseWineGame') }}");
+        }
+    </script>
 {% endblock %}
 
 {% block body %}
-    <div class="container mt-3">
+    <div class="container mt-3" style="min-height: 100vh;">
         {% for message in app.flashes('success') %}
             <div class="alert alert-success">
-                {{ message }}
-            </div>
-        {% endfor %}
-        {% for message in app.flashes('error') %}
-            <div class="alert alert-danger">
                 {{ message }}
             </div>
         {% endfor %}
@@ -67,16 +68,16 @@
             </div>
             <div class="col-12 mt-3 mb-3">
                 <button type="submit" class="btn btn-info w-100 mb-2">Enregistrer les modifications</button>
-                <a class="btn btn-dark w-100 mb-2" href="#">Activer la bouteille</a>
-                <a class="btn btn-dark w-100 mb-2" href="#">{% if wineGame.padlockIsOpen %}Remprendre le comportement normal du cadenas{% else %}Ouvrir le cadenas{% endif %}</a>
+                <a class="btn btn-dark w-100 mb-2" href="{{ url('app_activateBottle', { id: wineGame.id }) }}">Activer la bouteille</a>
+                <a class="btn btn-dark w-100 mb-2" href="{{ url('app_activatePadlock', { id: wineGame.id }) }}">{% if wineGame.padlockIsOpen %}Reprendre le comportement normal du cadenas{% else %}Ouvrir le cadenas{% endif %}</a>
             </div>
         </div>
         {{ form_end(form) }}
     </div>
     <nav class="navbar bg-dark sticky-bottom">
         <form class="container-fluid">
-            <a class="btn btn-outline-danger">Changer d'objet</a>
-            <a class="btn btn-outline-warning">Retour au code</a>
+            <button class="btn btn-outline-danger" onclick="deleteCookie()">Changer d'objet</button>
+            <a class="btn btn-outline-warning" href="{{ url('app_index') }}">Retour au code</a>
         </form>
     </nav>
 {% endblock %}
