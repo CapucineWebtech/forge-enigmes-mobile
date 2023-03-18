@@ -27,7 +27,7 @@
         <h1>Piloter mon objet</h1>
         <div class="row mt-3">
             <div class="col-12 col-md-6 mb-3">
-                {{ form_label(form.wineGameName, 'Nom de la machine') }}
+                {{ form_label(form.wineGameName, 'Nom de votre Wine Game') }}
                 {{ form_widget(form.wineGameName, {'attr': {'class': 'form-control'}}) }}
                 {{ form_errors(form.wineGameName) }}
             </div>
@@ -37,7 +37,7 @@
                 {{ form_errors(form.music) }}
             </div>
             <div class="col-12 col-md-6 mb-3">
-                {{ form_label(form.temperature, 'Sur la bouteille : Température de déclanchement') }}
+                {{ form_label(form.temperature, 'Sur la bouteille : Température de déclenchement') }}
                 {{ form_widget(form.temperature, {'attr': {'class': 'form-control'}}) }}
                 {{ form_errors(form.temperature) }}
             </div>
@@ -52,12 +52,12 @@
                 {{ form_errors(form.userCodeName) }}
             </div>
             <div class="col-12 col-md-6 mb-3">
-                {{ form_label(form.userCode, "Sur appli mobile : Code à rentrer pour l'utilisateur") }}
+                {{ form_label(form.userCode, "Sur appli mobile : Code utilisateur") }}
                 {{ form_widget(form.userCode, {'attr': {'class': 'form-control'}}) }}
                 {{ form_errors(form.userCode) }}
             </div>
             <div class="col-12 col-md-6 mb-3">
-                {{ form_label(form.adminCode, "Sur appli mobile : Code à rentrer pour l'administateur") }}
+                {{ form_label(form.adminCode, "Sur appli mobile : Code administateur") }}
                 {{ form_widget(form.adminCode, {'attr': {'class': 'form-control'}}) }}
                 {{ form_errors(form.adminCode) }}
             </div>

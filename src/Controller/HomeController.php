@@ -45,6 +45,14 @@ class HomeController extends AbstractController
         return $response;
     }
 
+    private function clearWineGameUserCookie(): Response
+    {
+        $response = new Response();
+        $response->headers->clearCookie('wineGameUserCookie');
+        $response->send();
+        return $response;
+    }
+
     /**
      * @param EntityManagerInterface $em
      */
@@ -59,6 +67,7 @@ class HomeController extends AbstractController
     public function choseWineGame(Request $request): Response
     {
         $this->clearWineGameAdminCookie();
+        $this->clearWineGameUserCookie();
         if ($request->cookies->has('wineGameCookie')) {
             return $this->redirectToRoute('app_index');
         }
@@ -98,6 +107,7 @@ class HomeController extends AbstractController
     public function index(Request $request): Response
     {
         $this->clearWineGameAdminCookie();
+        $this->clearWineGameUserCookie();
         $winegame = $this->checkWineGameCookie($request);
         if (!$winegame) {
             return $this->redirectToRoute('app_choseWineGame');
@@ -127,7 +137,7 @@ class HomeController extends AbstractController
                 return $this->redirectToRoute('app_setAdminCookie');
             }
             // invalid code
-            $this->addFlash('error', 'Code incorrecte');
+            $this->addFlash('error', 'Code incorrect');
             return $this->redirectToRoute('app_index');
         }
 
@@ -157,6 +167,7 @@ class HomeController extends AbstractController
     #[Route('/admin', name: 'app_admin')]
     public function admin(Request $request): Response
     {
+        $this->clearWineGameUserCookie();
         $user = $this->getUser();
         if (!$user) {
             return $this->redirectToRoute('app_login');
@@ -178,7 +189,7 @@ class HomeController extends AbstractController
             $this->em->flush();
             $this->addFlash(
                 'success',
-                "Données mises à jour. Pour les changements sur la bouteille veuillez la redémarer."
+                "Données mises à jour. Pour que les changements sur la bouteille soient effectifs, veuillez la redémarrer."
             );
             return $this->redirectToRoute('app_admin');
         }
@@ -228,6 +239,7 @@ class HomeController extends AbstractController
     #[Route('/wineOrder', name: 'app_wineOrder')]
     public function wineOrder(Request $request): Response
     {
+        $this->clearWineGameAdminCookie();
         $winegame = $this->checkWineGameCookie($request);
         if (!$winegame) {
             return $this->redirectToRoute('app_choseWineGame');
@@ -245,6 +257,7 @@ class HomeController extends AbstractController
     #[Route('/wineWhite', name: 'app_wineWhite')]
     public function wineWhite(Request $request): Response
     {
+        $this->clearWineGameAdminCookie();
         $winegame = $this->checkWineGameCookie($request);
         if (!$winegame) {
             return $this->redirectToRoute('app_choseWineGame');
@@ -258,6 +271,7 @@ class HomeController extends AbstractController
     #[Route('/winePink', name: 'app_winePink')]
     public function winePink(Request $request): Response
     {
+        $this->clearWineGameAdminCookie();
         $winegame = $this->checkWineGameCookie($request);
         if (!$winegame) {
             return $this->redirectToRoute('app_choseWineGame');
@@ -271,6 +285,7 @@ class HomeController extends AbstractController
     #[Route('/wineRed', name: 'app_wineRed')]
     public function wineRed(Request $request): Response
     {
+        $this->clearWineGameAdminCookie();
         $winegame = $this->checkWineGameCookie($request);
         if (!$winegame) {
             return $this->redirectToRoute('app_choseWineGame');
