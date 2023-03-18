@@ -28,29 +28,10 @@ class HomeController extends AbstractController
 
         $winegame = $this->em->getRepository(WineGame::class)->find($cookieParts[0]);
         if (!$winegame || $winegame->getCookiePass() != $cookieParts[1]) {
-            $response = new Response();
-            $response->headers->clearCookie('wineGameCookie');
-            $response->send();
             return null;
         }
 
         return $winegame;
-    }
-
-    private function clearWineGameAdminCookie(): Response
-    {
-        $response = new Response();
-        $response->headers->clearCookie('wineGameAdminCookie');
-        $response->send();
-        return $response;
-    }
-
-    private function clearWineGameUserCookie(): Response
-    {
-        $response = new Response();
-        $response->headers->clearCookie('wineGameUserCookie');
-        $response->send();
-        return $response;
     }
 
     /**
@@ -66,10 +47,14 @@ class HomeController extends AbstractController
     #[Route('/chose-winegame', name: 'app_choseWineGame')]
     public function choseWineGame(Request $request): Response
     {
-        $this->clearWineGameAdminCookie();
-        $this->clearWineGameUserCookie();
-        if ($request->cookies->has('wineGameCookie')) {
+        $response = new Response();
+        $response->headers->clearCookie('wineGameAdminCookie');
+        $response->headers->clearCookie('wineGameUserCookie');
+        $winegame = $this->checkWineGameCookie($request);
+        if ($winegame) {
             return $this->redirectToRoute('app_index');
+        }else{
+            $response->headers->clearCookie('wineGameCookie');
         }
 
         $user = $this->getUser();
@@ -89,7 +74,7 @@ class HomeController extends AbstractController
 
         return $this->render('choseWineGame.html.twig', [
             'winegames' => $winegames
-        ]);
+        ], $response);
     }
 
     #[Route('/setCookie/{id}', name: 'app_setCookie')]
@@ -106,8 +91,9 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_index')]
     public function index(Request $request): Response
     {
-        $this->clearWineGameAdminCookie();
-        $this->clearWineGameUserCookie();
+        $response = new Response();
+        $response->headers->clearCookie('wineGameAdminCookie');
+        $response->headers->clearCookie('wineGameUserCookie');
         $winegame = $this->checkWineGameCookie($request);
         if (!$winegame) {
             return $this->redirectToRoute('app_choseWineGame');
@@ -141,7 +127,7 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('app_index');
         }
 
-        return $this->render('index.html.twig', ['form' => $form]);
+        return $this->render('index.html.twig', ['form' => $form], $response);
     }
 
     #[Route('/setAminCookie', name: 'app_setAdminCookie')]
@@ -167,7 +153,8 @@ class HomeController extends AbstractController
     #[Route('/admin', name: 'app_admin')]
     public function admin(Request $request): Response
     {
-        $this->clearWineGameUserCookie();
+        $response = new Response();
+        $response->headers->clearCookie('wineGameUserCookie');
         $user = $this->getUser();
         if (!$user) {
             return $this->redirectToRoute('app_login');
@@ -197,7 +184,7 @@ class HomeController extends AbstractController
         return $this->render('admin.html.twig', [
             'form' => $form,
             'wineGame' => $winegame
-        ]);
+        ], $response);
     }
 
     #[IsGranted('ROLE_USER')]
@@ -239,7 +226,8 @@ class HomeController extends AbstractController
     #[Route('/wineOrder', name: 'app_wineOrder')]
     public function wineOrder(Request $request): Response
     {
-        $this->clearWineGameAdminCookie();
+        $response = new Response();
+        $response->headers->clearCookie('wineGameAdminCookie');
         $winegame = $this->checkWineGameCookie($request);
         if (!$winegame) {
             return $this->redirectToRoute('app_choseWineGame');
@@ -251,13 +239,14 @@ class HomeController extends AbstractController
 
         return $this->render('wineOrder.html.twig', [
             'wineGame' => $winegame
-        ]);
+        ], $response);
     }
 
     #[Route('/wineWhite', name: 'app_wineWhite')]
     public function wineWhite(Request $request): Response
     {
-        $this->clearWineGameAdminCookie();
+        $response = new Response();
+        $response->headers->clearCookie('wineGameAdminCookie');
         $winegame = $this->checkWineGameCookie($request);
         if (!$winegame) {
             return $this->redirectToRoute('app_choseWineGame');
@@ -265,13 +254,14 @@ class HomeController extends AbstractController
         if (!$request->cookies->has('wineGameUserCookie')) {
             return $this->redirectToRoute('app_index');
         }
-        return $this->render('wineWhite.html.twig');
+        return $this->render('wineWhite.html.twig',[] , $response);
     }
 
     #[Route('/winePink', name: 'app_winePink')]
     public function winePink(Request $request): Response
     {
-        $this->clearWineGameAdminCookie();
+        $response = new Response();
+        $response->headers->clearCookie('wineGameAdminCookie');
         $winegame = $this->checkWineGameCookie($request);
         if (!$winegame) {
             return $this->redirectToRoute('app_choseWineGame');
@@ -279,13 +269,14 @@ class HomeController extends AbstractController
         if (!$request->cookies->has('wineGameUserCookie')) {
             return $this->redirectToRoute('app_index');
         }
-        return $this->render('winePink.html.twig');
+        return $this->render('winePink.html.twig',[] , $response);
     }
 
     #[Route('/wineRed', name: 'app_wineRed')]
     public function wineRed(Request $request): Response
     {
-        $this->clearWineGameAdminCookie();
+        $response = new Response();
+        $response->headers->clearCookie('wineGameAdminCookie');
         $winegame = $this->checkWineGameCookie($request);
         if (!$winegame) {
             return $this->redirectToRoute('app_choseWineGame');
@@ -293,6 +284,6 @@ class HomeController extends AbstractController
         if (!$request->cookies->has('wineGameUserCookie')) {
             return $this->redirectToRoute('app_index');
         }
-        return $this->render('wineRed.html.twig');
+        return $this->render('wineRed.html.twig',[] , $response);
     }
 }
