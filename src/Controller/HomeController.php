@@ -50,12 +50,7 @@ class HomeController extends AbstractController
         $response = new Response();
         $response->headers->clearCookie('wineGameAdminCookie');
         $response->headers->clearCookie('wineGameUserCookie');
-        $winegame = $this->checkWineGameCookie($request);
-        if ($winegame) {
-            return $this->redirectToRoute('app_index');
-        }else{
-            $response->headers->clearCookie('wineGameCookie');
-        }
+        $response->headers->clearCookie('wineGameCookie');
 
         $user = $this->getUser();
         if (!$user) {
@@ -77,9 +72,30 @@ class HomeController extends AbstractController
         ], $response);
     }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/setCookie/{id}', name: 'app_setCookie')]
     public function setCookie(WineGame $wineGame): Response
     {
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        $queryBuilder = $this->em->createQueryBuilder();
+        $queryBuilder
+            ->select('wg')
+            ->from('App\Entity\WineGame', 'wg')
+            ->leftJoin('wg.user', 'u')
+            ->where('u.id = :userId')
+            ->andWhere('wg.id = :wineGameId')
+            ->setParameter('userId', $user->getId())
+            ->setParameter('wineGameId', $wineGame->getId());
+
+        $winegame = $queryBuilder->getQuery()->getResult();
+        if(!$winegame){
+            return $this->redirectToRoute('app_index');
+        }
+
         $cookieValue = $wineGame->getId().":".$wineGame->getCookiePass();
         $response = $this->redirectToRoute('app_index');
         $response->headers->setCookie(
